@@ -6,6 +6,7 @@ import com.cobblegyms.battle.TeamValidator
 import com.cobblegyms.data.GymRepository
 import com.cobblegyms.data.models.PokemonType
 import com.cobblegyms.gui.GymsMenu
+import com.cobblegyms.util.TimeUtil
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.context.CommandContext
 import net.minecraft.command.CommandRegistryAccess
@@ -336,7 +337,7 @@ object GymsCommand {
     
     private fun showLeaderboard(ctx: CommandContext<ServerCommandSource>): Int {
         val player = ctx.source.player ?: return 0
-        val weekStart = getWeekStart()
+        val weekStart = TimeUtil.getWeekStartSeconds()
         
         player.sendMessage(Text.literal("§6§l=== Weekly Leaderboard ==="))
         
@@ -378,15 +379,5 @@ object GymsCommand {
         // Cobblemon dependency exposes a showdown-format export.  Until that is
         // available, team validation via /gyms validate is not functional.
         return null
-    }
-    
-    private fun getWeekStart(): Long {
-        val cal = java.util.Calendar.getInstance()
-        cal.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY)
-        cal.set(java.util.Calendar.HOUR_OF_DAY, 0)
-        cal.set(java.util.Calendar.MINUTE, 0)
-        cal.set(java.util.Calendar.SECOND, 0)
-        cal.set(java.util.Calendar.MILLISECOND, 0)
-        return cal.timeInMillis / 1000
     }
 }

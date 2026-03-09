@@ -1,6 +1,7 @@
 package com.cobblegyms
 
 import com.cobblegyms.commands.ChallengeCommand
+import com.cobblegyms.commands.ExtraBanCommand
 import com.cobblegyms.commands.GymsAdminCommand
 import com.cobblegyms.commands.GymsCommand
 import com.cobblegyms.data.DatabaseManager
@@ -59,6 +60,7 @@ object CobbleGyms : ModInitializer {
             GymsCommand.register(dispatcher)
             ChallengeCommand.register(dispatcher)
             GymsAdminCommand.register(dispatcher)
+            ExtraBanCommand.register(dispatcher)
         }
         
         // Server lifecycle events

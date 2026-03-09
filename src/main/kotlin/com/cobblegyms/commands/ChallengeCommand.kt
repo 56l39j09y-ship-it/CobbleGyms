@@ -5,6 +5,7 @@ import com.cobblegyms.battle.BattleManager
 import com.cobblegyms.data.GymRepository
 import com.cobblegyms.data.models.BattleFormat
 import com.cobblegyms.gui.ChallengeMenu
+import com.cobblegyms.util.TimeUtil
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.context.CommandContext
 import net.minecraft.server.command.CommandManager
@@ -321,7 +322,7 @@ object ChallengeCommand {
         val player = ctx.source.player ?: return 0
         if (!isLeaderOrHigher(player.uuid)) return 0
         
-        val weekStart = getWeekStart()
+        val weekStart = TimeUtil.getWeekStartSeconds()
         val stats = GymRepository.getWeeklyStats(player.uuid, weekStart)
         
         player.sendMessage(Text.literal("§6§l=== Your Weekly Stats ==="))
@@ -340,15 +341,5 @@ object ChallengeCommand {
         return CobbleGyms.gymManager.isGymLeader(uuid) ||
                 CobbleGyms.gymManager.isEliteFour(uuid) ||
                 CobbleGyms.gymManager.isChampion(uuid)
-    }
-    
-    private fun getWeekStart(): Long {
-        val cal = java.util.Calendar.getInstance()
-        cal.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY)
-        cal.set(java.util.Calendar.HOUR_OF_DAY, 0)
-        cal.set(java.util.Calendar.MINUTE, 0)
-        cal.set(java.util.Calendar.SECOND, 0)
-        cal.set(java.util.Calendar.MILLISECOND, 0)
-        return cal.timeInMillis / 1000
     }
 }

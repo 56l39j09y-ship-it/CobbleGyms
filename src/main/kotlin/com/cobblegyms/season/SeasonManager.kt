@@ -4,6 +4,8 @@ import com.cobblegyms.CobbleGyms
 import com.cobblegyms.config.GymConfig
 import com.cobblegyms.data.GymRepository
 import com.cobblegyms.data.models.SeasonData
+import com.cobblegyms.util.MessageUtil
+import com.cobblegyms.util.TimeUtil
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
@@ -79,19 +81,11 @@ class SeasonManager {
         return maxOf(0L, seasonDurationSeconds - elapsed)
     }
     
-    fun formatRemainingTime(): String {
-        val seconds = getRemainingTime()
-        val days = seconds / 86400
-        val hours = (seconds % 86400) / 3600
-        val minutes = (seconds % 3600) / 60
-        return "${days}d ${hours}h ${minutes}m"
-    }
+    fun formatRemainingTime(): String = TimeUtil.formatDuration(getRemainingTime())
     
     private fun broadcastMessage(message: String) {
         try {
-            CobbleGyms.server.playerManager.playerList.forEach { player ->
-                player.sendMessage(net.minecraft.text.Text.literal(message))
-            }
+            MessageUtil.broadcast(CobbleGyms.server, message)
         } catch (e: Exception) {
             CobbleGyms.LOGGER.warn("Could not broadcast message: ${e.message}")
         }

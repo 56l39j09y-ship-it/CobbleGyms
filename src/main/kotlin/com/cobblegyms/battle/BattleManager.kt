@@ -4,6 +4,7 @@ import com.cobblegyms.CobbleGyms
 import com.cobblegyms.config.GymConfig
 import com.cobblegyms.data.GymRepository
 import com.cobblegyms.data.models.*
+import com.cobblegyms.util.TimeUtil
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
@@ -162,7 +163,7 @@ class BattleManager {
         // Get current season
         val season = GymRepository.getCurrentSeason()
         if (season != null) {
-            val weekStart = getWeekStart()
+            val weekStart = TimeUtil.getWeekStartSeconds()
             
             // Save battle record
             val leaderName = CobbleGyms.server.playerManager.getPlayer(leaderUuid)?.name?.string ?: "Unknown"
@@ -366,16 +367,6 @@ class BattleManager {
         CobbleGyms.server.playerManager.playerList.forEach { player ->
             player.sendMessage(Text.literal("§6§l★ NEW CHAMPION! §e$name §6has become the new Pokémon Champion! ★"))
         }
-    }
-    
-    private fun getWeekStart(): Long {
-        val cal = java.util.Calendar.getInstance()
-        cal.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY)
-        cal.set(java.util.Calendar.HOUR_OF_DAY, 0)
-        cal.set(java.util.Calendar.MINUTE, 0)
-        cal.set(java.util.Calendar.SECOND, 0)
-        cal.set(java.util.Calendar.MILLISECOND, 0)
-        return cal.timeInMillis / 1000
     }
     
     // ===== SEALED RESULT TYPES =====

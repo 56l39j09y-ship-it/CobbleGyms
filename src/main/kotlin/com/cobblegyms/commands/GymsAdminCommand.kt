@@ -6,6 +6,7 @@ import com.cobblegyms.config.GymConfig
 import com.cobblegyms.data.GymRepository
 import com.cobblegyms.data.models.*
 import com.cobblegyms.pokepaste.PokepasteImporter
+import com.cobblegyms.util.TimeUtil
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.IntegerArgumentType
 import com.mojang.brigadier.arguments.StringArgumentType
@@ -519,7 +520,7 @@ object GymsAdminCommand {
     }
     
     private fun viewLeaderboard(ctx: CommandContext<ServerCommandSource>): Int {
-        val weekStart = getWeekStart()
+        val weekStart = TimeUtil.getWeekStartSeconds()
         ctx.source.sendFeedback({ Text.literal("§6§l=== Admin Leaderboard ===") }, false)
         
         val gymStats = GymRepository.getWeeklyLeaderboard("GYM", weekStart)
@@ -535,15 +536,5 @@ object GymsAdminCommand {
         }
         
         return 1
-    }
-    
-    private fun getWeekStart(): Long {
-        val cal = java.util.Calendar.getInstance()
-        cal.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.MONDAY)
-        cal.set(java.util.Calendar.HOUR_OF_DAY, 0)
-        cal.set(java.util.Calendar.MINUTE, 0)
-        cal.set(java.util.Calendar.SECOND, 0)
-        cal.set(java.util.Calendar.MILLISECOND, 0)
-        return cal.timeInMillis / 1000
     }
 }
