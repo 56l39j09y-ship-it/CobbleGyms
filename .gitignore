@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Eclipse
+*.classpath
+*.project
+.settings/
+
+# Mac
+.DS_Store
+
+# Log files
+*.log
+
+# Runtime data
+run/
