@@ -34,10 +34,9 @@ class RewardManager {
     private fun checkAndDistributeWeeklyRewards() {
         val now = System.currentTimeMillis() / 1000
         val weekStart = getWeekStart()
-        val weekEnd = weekStart + 7 * 24 * 3600L
         
-        // Only process at the end of the week
-        if (now < weekEnd) return
+        // Only process once the current week has started (i.e., the previous week has ended)
+        if (now < weekStart) return
         
         val previousWeekStart = weekStart - 7 * 24 * 3600L
         

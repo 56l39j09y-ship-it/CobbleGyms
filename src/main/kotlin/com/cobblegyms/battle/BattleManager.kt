@@ -297,7 +297,7 @@ class BattleManager {
         
         // Clear queue
         GymRepository.clearQueue(leaderUuid)
-        activeBattles.values.removeAll { it.leaderUuid == leaderUuid }
+        activeBattles.entries.removeIf { it.value.leaderUuid == leaderUuid }
         restoreTeam(leaderUuid)
     }
     

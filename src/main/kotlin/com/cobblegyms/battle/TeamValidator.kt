@@ -259,7 +259,6 @@ object TeamValidator {
         "blaziken" to listOf("Fire", "Fighting"),
         "salamence" to listOf("Dragon", "Flying"),
         "metagross" to listOf("Steel", "Psychic"),
-        "garchomp" to listOf("Dragon", "Ground"),
         "togekiss" to listOf("Fairy", "Flying"),
         "rotom-wash" to listOf("Electric", "Water"),
         "ferrothorn" to listOf("Grass", "Steel"),

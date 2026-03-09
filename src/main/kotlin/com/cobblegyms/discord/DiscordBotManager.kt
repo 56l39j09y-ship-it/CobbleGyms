@@ -41,7 +41,6 @@ class DiscordBotManager {
         
         val channel = getBattleLogChannel() ?: return
         
-        val winnerStr = if (record.winner == "LEADER") "§c${record.leaderName}" else "§a${record.challengerName}"
         val embed = net.dv8tion.jda.api.EmbedBuilder()
             .setTitle("Battle Record - ${record.battleType}")
             .setColor(if (record.winner == "LEADER") 0xFF0000 else 0x00FF00)
