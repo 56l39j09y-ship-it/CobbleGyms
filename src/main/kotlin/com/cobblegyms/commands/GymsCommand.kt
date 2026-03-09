@@ -373,9 +373,11 @@ object GymsCommand {
     }
     
     private fun getPlayerTeamAsPokepaste(player: ServerPlayerEntity): String? {
-        // In a full implementation, this would read from Cobblemon's party system
-        // CobblemonAPI.getParty(player)?.toShowdownFormat()
-        return null // Placeholder - Cobblemon integration
+        // TODO: Implement Cobblemon party integration.
+        // This requires CobblemonAPI.getParty(player)?.toShowdownFormat() once the
+        // Cobblemon dependency exposes a showdown-format export.  Until that is
+        // available, team validation via /gyms validate is not functional.
+        return null
     }
     
     private fun getWeekStart(): Long {

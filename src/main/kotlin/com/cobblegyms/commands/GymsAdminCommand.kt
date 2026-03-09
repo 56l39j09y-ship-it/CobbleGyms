@@ -411,6 +411,13 @@ object GymsAdminCommand {
         return 1
     }
     
+    /**
+     * Resets an active battle so it can be replayed from the start.
+     * Intended for admin use when a battle glitched or started incorrectly.
+     * Only valid when the battle has had at most 1 turn; battles further
+     * along cannot be redone to prevent abuse.
+     * Resets cooldowns for both participants so neither is penalised.
+     */
     private fun redoBattle(ctx: CommandContext<ServerCommandSource>, leader: ServerPlayerEntity): Int {
         val battle = CobbleGyms.battleManager.getActiveBattleForLeader(leader.uuid)
         if (battle == null) {
