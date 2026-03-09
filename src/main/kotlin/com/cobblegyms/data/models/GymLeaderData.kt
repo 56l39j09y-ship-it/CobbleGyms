@@ -56,7 +56,9 @@ data class GymLocation(
     val z: Double,
     val yaw: Float = 0f,
     val pitch: Float = 0f
-)
+) {
+    companion object
+}
 
 enum class BattleFormat {
     SINGLES, DOUBLES
@@ -84,7 +86,7 @@ enum class PokemonType(val displayName: String, val color: String) {
     
     companion object {
         fun fromString(name: String): PokemonType? {
-            return values().find { it.name.equals(name, ignoreCase = true) }
+            return entries.find { it.name.equals(name, ignoreCase = true) }
         }
     }
 }

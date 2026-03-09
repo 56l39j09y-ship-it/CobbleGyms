@@ -1,5 +1,6 @@
 package com.cobblegyms.config
 
+import com.cobblegyms.CobbleGyms
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import net.fabricmc.loader.api.FabricLoader
@@ -80,6 +81,7 @@ object GymConfig {
             try {
                 config = json.decodeFromString(configFile.readText())
             } catch (e: Exception) {
+                CobbleGyms.LOGGER.error("Failed to load config, using defaults", e)
                 config = GymConfigData()
             }
         }
