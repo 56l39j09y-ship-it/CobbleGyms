@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblegyms",
+  "version": "${version}",
+  "name": "CobbleGyms",
+  "description": "Sistema completo de Gyms, E4 y Campeón Pokémon para servidores Cobblemon",
+  "authors": ["CobbleGyms Team"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.cobblegyms.CobbleGyms"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "cobblemon": "*",
+    "minecraft": "~1.21.1"
+  }
+}
