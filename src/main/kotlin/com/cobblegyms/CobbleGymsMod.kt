@@ -1,50 +1,107 @@
 package com.cobblegyms
 
-class CobbleGymsMod {
+import com.cobblegyms.commands.ChallengeCommand
+import com.cobblegyms.commands.GymsAdminCommand
+import com.cobblegyms.commands.GymsCommand
+import com.cobblegyms.config.CobbleGymsConfig
+import com.cobblegyms.database.DatabaseManager
+import com.cobblegyms.discord.DiscordBot
+import com.cobblegyms.events.BattleEventListener
+import com.cobblegyms.managers.BattleManager
+import com.cobblegyms.managers.ChampionManager
+import com.cobblegyms.managers.E4Manager
+import com.cobblegyms.managers.GymManager
+import com.cobblegyms.managers.RewardSystem
+import com.cobblegyms.managers.SeasonManager
+import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
+import org.slf4j.LoggerFactory
 
-    private val gymManager = GymManager()
-    private val e4Manager = E4Manager()
-    private val championManager = ChampionManager()
-    private val seasonManager = SeasonManager()
-    private val battleManager = BattleManager()
-    private val rewardSystem = RewardSystem()
+/**
+ * CobbleGyms – Competitive Pokémon Gym System for Cobblemon/Fabric.
+ *
+ * Initialises all subsystems in order:
+ *  1. Configuration
+ *  2. Database
+ *  3. Managers
+ *  4. Commands
+ *  5. Event Listeners
+ *  6. Discord bot (optional)
+ */
+class CobbleGymsMod : ModInitializer {
 
-    init {
-        // Initialize everything
+    companion object {
+        const val MOD_ID = "cobblegyms"
+        val logger = LoggerFactory.getLogger(MOD_ID)
+    }
+
+    // Core managers – created after config + database are ready
+    private lateinit var gymManager: GymManager
+    private lateinit var e4Manager: E4Manager
+    private lateinit var championManager: ChampionManager
+    private lateinit var seasonManager: SeasonManager
+    private lateinit var battleManager: BattleManager
+    private lateinit var rewardSystem: RewardSystem
+    private lateinit var discordBot: DiscordBot
+    private lateinit var eventListener: BattleEventListener
+
+    override fun onInitialize() {
+        logger.info("CobbleGyms initialising…")
+
+        loadConfiguration()
+        initializeDatabase()
         initializeManagers()
         registerCommands()
-        initializeDatabase()
-        initializeDiscordBot()
         setupEventListeners()
-        setupLogger()
-        loadConfiguration()
+        initializeDiscordBot()
+
+        logger.info("CobbleGyms initialised successfully!")
     }
 
-    private fun initializeManagers() {
-        // Logic to initialize managers
-    }
+    // -------------------------------------------------------------------------
+    // Initialisation steps
+    // -------------------------------------------------------------------------
 
-    private fun registerCommands() {
-        // Logic to register commands
+    private fun loadConfiguration() {
+        CobbleGymsConfig.load()
+        logger.info("Configuration loaded")
     }
 
     private fun initializeDatabase() {
-        // Logic to initialize database
+        DatabaseManager.initialize(CobbleGymsConfig.get().database)
+        logger.info("Database initialised")
     }
 
-    private fun initializeDiscordBot() {
-        // Logic to initialize Discord bot
+    private fun initializeManagers() {
+        val config = CobbleGymsConfig.get()
+        gymManager = GymManager()
+        e4Manager = E4Manager()
+        championManager = ChampionManager()
+        seasonManager = SeasonManager(config.season)
+        battleManager = BattleManager(config.battle)
+        rewardSystem = RewardSystem(config.rewards)
+        logger.info("Managers initialised")
+    }
+
+    private fun registerCommands() {
+        CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
+            GymsCommand(gymManager, e4Manager, championManager, seasonManager).register(dispatcher)
+            ChallengeCommand(gymManager, e4Manager, championManager, battleManager).register(dispatcher)
+            GymsAdminCommand(gymManager, e4Manager, championManager, seasonManager).register(dispatcher)
+        }
+        logger.info("Commands registered")
     }
 
     private fun setupEventListeners() {
-        // Logic to setup event listeners for battle events
+        eventListener = BattleEventListener(
+            gymManager, e4Manager, championManager, seasonManager, battleManager, rewardSystem
+        )
+        eventListener.register()
+        logger.info("Event listeners registered")
     }
 
-    private fun setupLogger() {
-        // Logic to create a logger for mod debugging
-    }
-
-    private fun loadConfiguration() {
-        // Logic to set up configuration loading
+    private fun initializeDiscordBot() {
+        discordBot = DiscordBot(CobbleGymsConfig.get().discord)
+        discordBot.start()
     }
 }

@@ -1,0 +1,100 @@
+# CobbleGyms Configuration
+# This file serves as a human-readable reference for the settings.
+# The actual config is loaded from config/cobblegyms/config.json.
+# Edit config.json (auto-generated on first run) to change settings.
+
+database:
+  # Path to the SQLite database file (relative to server root)
+  filePath: "config/cobblegyms/cobblegyms.db"
+
+season:
+  # Duration of each competitive season in days
+  durationDays: 30
+  # Automatically end and start a new season when duration expires
+  autoReset: true
+
+battle:
+  # Seconds before a queued player is automatically removed
+  queueTimeoutSeconds: 300
+  # Maximum players per battle queue
+  maxQueueSize: 50
+  # Allow players to spectate battles
+  allowSpectators: true
+
+rewards:
+  # Currency awarded for earning a gym badge
+  gymBadgeReward: 1000
+  # Currency awarded for defeating an Elite Four member
+  e4WinReward: 5000
+  # Currency awarded for defeating the Champion
+  championReward: 10000
+  # Hours before a player can receive the same reward again
+  cooldownHours: 24
+
+smogon:
+  # Smogon format identifier (informational label)
+  format: "gen9ou"
+  # Enable/disable the Pokémon/move/ability ban list
+  banListEnabled: true
+  # Banned Pokémon species (case-insensitive)
+  bannedPokemon:
+    - Koraidon
+    - Miraidon
+    - Zacian
+    - Zamazenta
+    - Eternatus
+    - Kyogre
+    - Groudon
+    - Rayquaza
+    - Dialga
+    - Palkia
+    - Giratina
+    - Reshiram
+    - Zekrom
+    - Kyurem-White
+    - Kyurem-Black
+    - Xerneas
+    - Yveltal
+    - Zygarde-Complete
+    - Cosmog
+    - Cosmoem
+    - Solgaleo
+    - Lunala
+    - Necrozma-Dawn
+    - Necrozma-Dusk
+    - Calyrex-Shadow
+    - Calyrex-Ice
+  # Banned moves
+  bannedMoves:
+    - "Baton Pass"
+  # Banned abilities
+  bannedAbilities:
+    - "Arena Trap"
+    - "Shadow Tag"
+    - "Moody"
+    - "Power Construct"
+  # Required team size
+  teamSize: 6
+  # Maximum Pokémon level
+  maxLevel: 100
+
+discord:
+  # Set to true to enable Discord notifications
+  enabled: false
+  # Your Discord bot token (keep secret!)
+  botToken: ""
+  # ID of the Discord text channel to post notifications to
+  channelId: ""
+  # What to notify about
+  notifyGymWins: true
+  notifyE4Wins: true
+  notifyChampion: true
+  notifySeasonEnd: true
+
+gui:
+  # Use chest-based GUI menus when available
+  useGui: true
+  mainMenuTitle: "§6✦ CobbleGyms ✦"
+  gymMenuTitle: "§e⚔ Gym Leaders"
+  e4MenuTitle: "§5★ Elite Four"
+  challengeMenuTitle: "§c⚡ Challenge Queue"
