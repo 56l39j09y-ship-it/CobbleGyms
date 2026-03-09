@@ -1,6 +1,5 @@
 package com.cobblegyms.util
 
-import com.cobblegyms.util.TimeUtil
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.ClickEvent
 import net.minecraft.text.HoverEvent

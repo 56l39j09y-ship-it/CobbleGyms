@@ -234,6 +234,7 @@ object GymsAdminCommand {
         if (!validation.valid) {
             ctx.source.sendError(Text.literal("Team validation failed:"))
             validation.violations.forEach { ctx.source.sendError(Text.literal(it)) }
+            return 0
         }
         
         CobbleGyms.gymManager.setGymTeam(player.uuid, slot, pokepaste)

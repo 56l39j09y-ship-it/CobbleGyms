@@ -372,7 +372,6 @@ class BattleManager {
     // ===== SEALED RESULT TYPES =====
     
     sealed class QueueJoinResult {
-        object SUCCESS_NO_WAIT : QueueJoinResult()
         data class SUCCESS(val position: Int) : QueueJoinResult()
         object ALREADY_IN_QUEUE : QueueJoinResult()
         data class ON_COOLDOWN(val remainingSeconds: Long) : QueueJoinResult()
