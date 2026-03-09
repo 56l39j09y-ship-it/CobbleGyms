@@ -229,7 +229,6 @@ public class GymsAdminCommand {
                         .then(CommandManager.literal("removeban")
                                 .then(CommandManager.argument("category", StringArgumentType.word())
                                         .then(CommandManager.argument("name", StringArgumentType.word())
-                                                .escapes()
                                                 .executes(ctx -> {
                                                     String category = StringArgumentType.getString(ctx, "category").toLowerCase();
                                                     String name = StringArgumentType.getString(ctx, "name");

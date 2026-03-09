@@ -22,7 +22,7 @@ public class SmogonBanConfig {
         "calyrexshadowrider", "koraidon", "miraidon", "necrozma",
         "necrozmaduskmane", "necrozmadawnwings", "necrozmaultranecrozma",
         "lugia", "hooh", "reshiram", "zekrom", "kyurem", "kyuremblack",
-        "kyuremwhite", "solgaleo", "lunala", "necrozma", "melmetal",
+        "kyuremwhite", "solgaleo", "lunala", "melmetal",
         "xerneas", "yveltal", "zygarde", "zygarde10", "zygardecomplete",
         "palkia", "dialga", "giratina", "giratinaorigin", "regigigas",
         "slaking", "shayminsky", "deoxys", "deoxysattack", "deoxysdefense",
@@ -31,9 +31,9 @@ public class SmogonBanConfig {
         "magearna", "volcanion", "hoopa", "hoopaconfined", "hoopaunbound",
         "landorusincarnate", "enamorus", "urshifurapidstrike", "urshifusinglestrike",
         "kubfu", "zarude", "glastrier", "spectrier", "eiscue", "indeedee",
-        "spectrier", "chienpaotauros", "chienpao", "tinkaton", "annihilape",
+        "chienpao", "tinkaton", "annihilape",
         "gholdengo", "ironbundle", "fluttermane", "greattusk", "ironmoth",
-        "roaringmoon", "walkingwake", "ironleaves", "ting-lu", "chienpaotauros"
+        "roaringmoon", "walkingwake", "ironleaves", "ting-lu"
     ));
 
     public Set<String> bannedMoves = new HashSet<>(Arrays.asList(

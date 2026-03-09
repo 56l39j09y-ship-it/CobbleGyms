@@ -66,8 +66,6 @@ public class SmogonValidator {
             }
         }
 
-        boolean hasBatonPass = party.stream()
-                .anyMatch(p -> CobblemonUtil.getPokemonMoves(p).contains("batonpass"));
         long batonPassCount = party.stream()
                 .filter(p -> CobblemonUtil.getPokemonMoves(p).contains("batonpass"))
                 .count();
