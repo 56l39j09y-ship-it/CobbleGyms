@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblegyms",
+  "version": "${version}",
+  "name": "CobbleGyms",
+  "description": "A comprehensive Pokémon Gym system for Cobblemon servers",
+  "authors": ["CobbleGyms Team"],
+  "contact": {
+    "sources": "https://github.com/56l39j09y-ship-it/CobbleGyms"
+  },
+  "license": "MIT",
+  "icon": "assets/cobblegyms/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": ["com.cobblegyms.CobbleGyms"],
+    "fabric-datagen": []
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric": "*",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-language-kotlin": ">=1.12.0",
+    "cobblemon": "*"
+  }
+}
