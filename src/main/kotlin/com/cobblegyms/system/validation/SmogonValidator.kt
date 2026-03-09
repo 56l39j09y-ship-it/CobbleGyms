@@ -1,0 +1,1 @@
+// Smogon rules validator

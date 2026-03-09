@@ -1,0 +1,1 @@
+// /gyms command for challengers

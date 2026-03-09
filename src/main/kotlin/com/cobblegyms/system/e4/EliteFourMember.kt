@@ -1,0 +1,1 @@
+// Elite Four member model

@@ -1,0 +1,1 @@
+// Pokémon ban list

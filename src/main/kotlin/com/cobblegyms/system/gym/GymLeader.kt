@@ -1,0 +1,1 @@
+// Gym leader model

@@ -1,0 +1,1 @@
+// /gymsadmin command for admins

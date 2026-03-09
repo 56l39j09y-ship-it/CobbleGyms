@@ -1,1 +1,1 @@
-plugins {\n    id("fabric-loom") version "1.1.0"\n}\n\n// Fabric API dependency\ndependencies {\n    minecraft("com.mojang:minecraft:1.21.1")\n    yarn("net.fabricmc:yarn:1.21.1:v2")\n    modCompile("net.fabricmc:fabric-api:0.46.3+1.21.1")\n    modImplementation("com.cobblemon:cobblemon:1.21.1")\n}\n\njava {\n    toolchain {\n        languageVersion = JavaLanguageVersion.of(17)\n    }\n}
+// Gradle build configuration
