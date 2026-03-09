@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblegyms",
+  "version": "${version}",
+  "name": "CobbleGyms",
+  "description": "A comprehensive competitive Pokémon gym system for Cobblemon featuring Gym Leaders, Elite Four, Champion, Smogon validation, and seasonal rankings.",
+  "authors": [
+    "56l39j09y-ship-it"
+  ],
+  "contact": {
+    "homepage": "https://github.com/56l39j09y-ship-it/CobbleGyms",
+    "sources": "https://github.com/56l39j09y-ship-it/CobbleGyms",
+    "issues": "https://github.com/56l39j09y-ship-it/CobbleGyms/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/cobblegyms/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.cobblegyms.CobbleGymsMod"
+    ]
+  },
+  "mixins": [
+    "cobblegyms.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=17",
+    "fabric-language-kotlin": "*",
+    "cobblemon": "*"
+  },
+  "suggests": {
+    "fabric-api": "*"
+  }
+}
