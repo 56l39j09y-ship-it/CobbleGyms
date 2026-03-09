@@ -26,7 +26,7 @@ public class SmogonBanConfig {
         "xerneas", "yveltal", "zygarde", "zygarde10", "zygardecomplete",
         "palkia", "dialga", "giratina", "giratinaorigin", "regigigas",
         "slaking", "shayminsky", "deoxys", "deoxysattack", "deoxysdefense",
-        "deoxysspeed", "darmanitangalar", "blazikenspeed", "genesect",
+        "deoxysspeed", "darmanitangalar", "blaziken", "genesect",
         "marshadow", "naganadel", "stakataka", "blacephalon", "zeraora",
         "magearna", "volcanion", "hoopa", "hoopaconfined", "hoopaunbound",
         "landorusincarnate", "enamorus", "urshifurapidstrike", "urshifusinglestrike",

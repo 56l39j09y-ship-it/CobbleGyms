@@ -1,8 +1,8 @@
 package com.cobblegyms.util;
 
 import java.time.*;
+import java.time.temporal.IsoFields;
 import java.time.temporal.WeekFields;
-import java.util.Locale;
 
 public class TimeUtil {
 
@@ -38,7 +38,7 @@ public class TimeUtil {
 
     public static long getWeekStart() {
         LocalDate today = LocalDate.now(ZoneOffset.UTC);
-        LocalDate monday = today.with(WeekFields.of(Locale.FRANCE).dayOfWeek(), 1);
+        LocalDate monday = today.with(WeekFields.ISO.dayOfWeek(), 1);
         return monday.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli();
     }
 
