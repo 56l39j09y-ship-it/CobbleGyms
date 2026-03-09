@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblegyms",
+  "version": "1.0.0",
+  "name": "CobbleGyms",
+  "description": "Professional Pokémon Gym League System for Cobblemon servers",
+  "authors": ["56l39j09y-ship-it"],
+  "contact": {
+    "homepage": "https://github.com/56l39j09y-ship-it/CobbleGyms",
+    "sources": "https://github.com/56l39j09y-ship-it/CobbleGyms",
+    "issues": "https://github.com/56l39j09y-ship-it/CobbleGyms/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.cobblegyms.CobbleGymsMod"]
+  },
+  "mixins": ["cobblegyms.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.1",
+    "cobblemon": "*"
+  }
+}
